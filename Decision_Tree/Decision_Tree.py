@@ -58,9 +58,6 @@ class Decision_Tree(object):
         if len(data) == 0: return node()
         
         current_entropy = self.entropy(data)
-        
-        print current_entropy
-        
         best_gain = 0.0
         best_criteria = None
         best_sets = None
@@ -87,11 +84,9 @@ class Decision_Tree(object):
                     best_gain = gain
                     best_criteria = (col, value)
                     best_sets = (true_set, false_set)
-        #=======================================================================
-        # print "best gain:"+str(best_gain)
-        # print "best criteria"+str(best_criteria)
-        # print "best sets"+str(best_sets)
-        #=======================================================================
+        print "best gain: "+str(best_gain)
+        print "best criteria: "+str(best_criteria)
+        print "best sets: "+str(best_sets)
         if best_gain > 0:
             trueBranch = self.buildtree(best_sets[0])
             falseBranch = self.buildtree(best_sets[1])
@@ -105,7 +100,7 @@ class Decision_Tree(object):
         if root_node==None:
             return
         self.display_tree(root_node.tb)
-        print "column: "+str(root_node.col)+"Value :"+str(root_node.value)+"Probability:"+str(root_node.results)
+        print "column: "+str(root_node.col)+" Value:"+str(root_node.value)+" Probability:"+str(root_node.results)
         self.display_tree(root_node.fb)  
         
     def measure_accuracy(self,root_node):

@@ -31,7 +31,7 @@ class SVM(object):
         sigma=8
         sum=0
         for i in range(1,len(xi)-1):
-            sum+=math.exp(-(math.pow(xi[i]-xj[i], 2))/(2*math.pow(sigma,2)))
+            sum+=float(math.exp(-(math.pow(xi[i]-xj[i], 2))/(2*math.pow(sigma,2))))
         return sum   
             
             
@@ -130,11 +130,11 @@ class SVM(object):
         for i in range(self.training_index,len(self.data)):
             if self.output_list[i] != output_test[i-self.training_index]:
                 inaccurate_count+=1                        
-        print inaccurate_count
+        print "Number of failed test cases: "+str(inaccurate_count)
         print len(self.data)-self.training_index
         accuracy=(1-float(inaccurate_count)/(len(self.data)-self.training_index))*100
         print(accuracy)
-        print("Accuracy of the SVM on test data:"+str(accuracy))          
+        print("Accuracy of the SVM on test data: "+str(accuracy))          
             
                      
                            
